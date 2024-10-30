@@ -25,14 +25,14 @@ class Reaper implements ReaperOscInstance {
     this.crashHandler = crashHandler;
   }
 
-  protected destroy = () => {
+  protected destroy: () => void = () => {
     this.client?.close();
     this.client = null;
     this.port = null;
     this.localPort = null;
   };
 
-  public connect = async () => {
+  public connect: () => Promise<void> = async () => {
     if (!this.localPort) {
       throw new Error("localPort is required");
     }
@@ -51,7 +51,11 @@ class Reaper implements ReaperOscInstance {
     });
   };
 
-  public formMessage = (path: string, type: string, arg: number) => {
+  public formMessage: (path: string, type: string, arg: number) => Buffer = (
+    path,
+    type,
+    arg,
+  ) => {
     const pathPart = stringToBytesWithPadding(path);
     const typePart = stringToBytesWithPadding(`,${type}`);
     // TODO: right now only float is supported. Add support for other types
@@ -71,7 +75,7 @@ class Reaper implements ReaperOscInstance {
     return oscBuffer;
   };
 
-  public send = async (msg: string) => {
+  public send: (msg: string) => Promise<void> = async (msg: string) => {
     const { client, port } = this;
     if (!client) throw new Error("client is not connected");
     if (!port) throw new Error("client port is not set");

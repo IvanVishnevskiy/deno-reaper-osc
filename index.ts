@@ -75,7 +75,7 @@ class Reaper implements ReaperOscInstance {
     return oscBuffer;
   };
 
-  public send: (msg: string) => Promise<void> = async (msg: string) => {
+  public send: (msg: Buffer) => Promise<void> = async (msg: Buffer) => {
     const { client, port } = this;
     if (!client) throw new Error("client is not connected");
     if (!port) throw new Error("client port is not set");

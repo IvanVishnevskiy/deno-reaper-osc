@@ -25,7 +25,7 @@ interface ReaperOscInstance {
    * @param msg - The message to send
    * @throws Error if client is not connected or port is not set
    */
-  send(msg: string): Promise<void>;
+  send(msg: Buffer): Promise<void>;
 }
 
 export type { ReaperOscInstance };

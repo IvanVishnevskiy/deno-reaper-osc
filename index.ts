@@ -65,7 +65,7 @@ class Reaper implements ReaperOscInstance {
     });
 
     client.on("message", (msg) => {
-      console.log(parseOSCMessage(msg));
+      // TODO: implement reading data
     });
 
     await new Promise((resolve) => {

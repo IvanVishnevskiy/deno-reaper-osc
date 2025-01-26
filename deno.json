@@ -1,5 +1,8 @@
 {
   "name": "@forgettd/deno-reaper-osc",
   "version": "0.1.2",
-  "exports": "./index.ts"
+  "exports": "./index.ts",
+  "imports": {
+    "@std/bytes": "jsr:@std/bytes@^1.0.4"
+  }
 }
